@@ -43,63 +43,67 @@ function Hero() {
   const imgY = useTransform(scrollY, [0, 800], [0, reduce ? 0 : 60])
 
   return (
-    <section className="hero" aria-labelledby="hero-titulo">
-      <motion.div
-        className="hero__shape"
-        initial={reduce ? false : { clipPath: 'inset(0 0 0 100%)' }}
-        animate={{ clipPath: 'inset(0 0 0 0%)' }}
-        transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1], delay: 0.15 }}
-      >
+    <>
+      <section className="hero" aria-labelledby="hero-titulo">
         <motion.div
-          style={{ y: imgY, height: '108%', marginTop: '-4%' }}
-          initial={reduce ? false : { scale: 1.12 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="hero__shape"
+          initial={reduce ? false : { clipPath: 'inset(0 0 0 100%)' }}
+          animate={{ clipPath: 'inset(0 0 0 0%)' }}
+          transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1], delay: 0.15 }}
         >
-          <Photo
-            src="/img/espaco/recepcao-marilia.jpg"
-            alt="Dra. Marília Vaz no balcão curvo da recepção da Clínica Vivaz, diante do logotipo da clínica"
-            priority
-            sizes="(max-width: 900px) 100vw, 60vw"
-            width={1000}
-            height={1060}
-            focus={photoFocus('/img/espaco/recepcao-marilia.jpg')}
-          />
-        </motion.div>
-      </motion.div>
-
-      <div className="wrap hero__content">
-        <div className="hero__text">
-          <h1 id="hero-titulo">
-            <VerticalCutReveal delay={0.2}>{content.hero_title}</VerticalCutReveal>
-          </h1>
-          <motion.p
-            className="hero__sentence"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {content.hero_sentence}
-          </motion.p>
           <motion.div
-            className="hero__actions"
-            initial={reduce ? false : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            style={{ y: imgY, height: '108%', marginTop: '-4%' }}
+            initial={reduce ? false : { scale: 1.12 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           >
-            <Link to="/agendar" className="btn">
-              Agendar consulta
-            </Link>
-            <Link to="/equipe" className="text-link">
-              Conhecer a equipe
-            </Link>
+            <Photo
+              src="/img/espaco/recepcao-marilia.jpg"
+              alt="Dra. Marília Vaz no balcão curvo da recepção da Clínica Vivaz, diante do logotipo da clínica"
+              priority
+              sizes="100vw"
+              width={1000}
+              height={1060}
+              focus={photoFocus('/img/espaco/recepcao-marilia.jpg')}
+            />
           </motion.div>
+        </motion.div>
+
+        <div className="wrap hero__content">
+          <div className="hero__text">
+            <h1 id="hero-titulo">
+              <VerticalCutReveal delay={0.2}>{content.hero_title}</VerticalCutReveal>
+            </h1>
+            <motion.p
+              className="hero__sentence"
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {content.hero_sentence}
+            </motion.p>
+            <motion.div
+              className="hero__actions"
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link to="/agendar" className="btn">
+                Agendar consulta
+              </Link>
+              <Link to="/equipe" className="text-link">
+                Conhecer a equipe
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      <div className="availability-band">
+        <div className="wrap">
+          <NextSlots />
         </div>
       </div>
-      <div className="wrap hero__availability">
-        <NextSlots />
-      </div>
-    </section>
+    </>
   )
 }
 

@@ -402,91 +402,104 @@ h3 {
   min-height: calc(100svh - 76px);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  background: var(--surface-2);
 }
 .hero__shape {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 57vw;
-  height: min(90%, 860px);
-  max-height: 900px;
-  transform: translateY(-50%);
-  border-radius: var(--motif-left);
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  transform: none;
+  border-radius: 0;
   overflow: hidden;
   background: var(--surface-2);
+}
+.hero__shape::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(20 16 14 / 0.96) 0%, rgb(20 16 14 / 0.86) 37%, rgb(20 16 14 / 0.3) 68%, rgb(20 16 14 / 0.06) 100%);
+  pointer-events: none;
 }
 .hero__shape img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 66% 38%;
-  transform: scale(1.01);
+  object-position: 66% 34%;
+  transform: scale(1.035);
 }
 .hero__content {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-block: 64px clamp(230px, 30vh, 290px);
+  padding-block: clamp(120px, 18vh, 180px) clamp(72px, 10vh, 110px);
 }
 .hero__text {
-  max-width: 44%;
+  max-width: min(56%, 760px);
 }
 .hero h1 {
-  font-size: clamp(3rem, 6vw, 6.25rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  max-width: 9ch;
+  font-size: clamp(4rem, 7.6vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  color: #fff;
 }
 .hero__sentence {
-  margin-top: 36px;
-  max-width: 30ch;
+  margin-top: 40px;
+  max-width: 34ch;
   font-size: var(--step-lead);
   line-height: 1.4;
-  color: var(--ink);
+  color: #fff;
 }
 .hero__actions {
-  margin-top: 36px;
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 28px;
 }
-.hero__availability {
-  position: absolute;
-  z-index: 2;
-  left: 50%;
-  bottom: 36px;
-  width: 100%;
-  transform: translateX(-50%);
-  pointer-events: none;
+.hero .text-link {
+  color: #fff;
 }
-.hero__availability .next-slots {
-  pointer-events: auto;
+.availability-band {
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding-block: 20px;
 }
 .next-slots {
   margin-top: 0;
-  max-width: 34rem;
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(190px, 0.8fr) minmax(0, 3.2fr);
+  gap: 24px;
+  align-items: center;
 }
 .next-slots__title {
   font-size: var(--step-body);
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  max-width: 20ch;
+  line-height: 1.3;
+}
+.next-slots > div {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
 }
 .next-slots__row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 16px;
-  padding: 10px 14px 10px 18px;
+  display: block;
+  padding: 12px 16px;
   text-decoration: none;
   border-radius: var(--motif-left);
   transition: background-color var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
 .next-slots__row:nth-child(odd) {
-  background: var(--surface);
+  background: rgb(20 16 14 / 0.08);
 }
 .next-slots__row:hover {
-  background: var(--surface-2);
+  background: rgb(20 16 14 / 0.15);
 }
 .next-slots__row:active {
   transform: scale(0.99);
@@ -495,13 +508,17 @@ h3 {
   font-weight: 500;
 }
 .next-slots__when {
+  display: block;
+  margin-top: 2px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-variant-numeric: tabular-nums;
-  text-align: right;
+  text-align: left;
+  font-size: var(--step-small);
 }
 .next-slots__when--none {
-  color: var(--muted);
+  color: var(--accent-ink);
+  opacity: 0.72;
   font-weight: 400;
 }
 .skeleton {
@@ -525,49 +542,69 @@ h3 {
 
 @media (max-width: 900px) {
   .hero {
-    min-height: auto;
+    min-height: calc(100svh - 68px);
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding-bottom: 0;
-  }
-  .hero__shape {
-    order: 2;
-  }
-  .hero__availability {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    order: 3;
-    transform: none;
-    padding-block: 36px 48px;
-    pointer-events: auto;
+    align-items: flex-end;
   }
   .hero__content {
-    padding-block: 40px 0;
+    padding-block: clamp(260px, 43svh, 390px) 56px;
   }
   .hero__text {
     max-width: none;
   }
   .hero h1 {
-    font-size: clamp(2.6rem, 11.5vw, 4.5rem);
+    max-width: 8ch;
+    font-size: clamp(3.25rem, 14vw, 5rem);
+    text-shadow: 0 1px 12px rgb(0 0 0 / 0.25);
   }
   .hero__sentence {
-    margin-top: 24px;
+    margin-top: 28px;
+    max-width: 31ch;
     font-size: var(--step-body);
   }
   .hero__shape {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: calc(100% + var(--margin));
-    margin-left: 0;
-    height: auto;
-    aspect-ratio: 4 / 4.35;
-    max-height: none;
-    margin-top: 44px;
-    border-radius: var(--motif-left);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+  .hero__shape::after {
+    background: linear-gradient(180deg, rgb(20 16 14 / 0.08) 0%, rgb(20 16 14 / 0.18) 34%, rgb(20 16 14 / 0.92) 72%, rgb(20 16 14 / 0.98) 100%);
+  }
+  .hero__shape img {
+    object-position: 67% 30%;
+    transform: scale(1.04);
+  }
+  .hero__actions {
+    margin-top: 32px;
+  }
+  .availability-band {
+    padding-block: 24px 28px;
+  }
+  .next-slots {
+    display: block;
+  }
+  .next-slots__title {
+    max-width: none;
+    margin-bottom: 12px;
+  }
+  .next-slots > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+  .next-slots__row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 10px 14px;
+  }
+  .next-slots__when {
+    margin-top: 0;
+    text-align: right;
   }
 }
 
@@ -782,15 +819,15 @@ h3 {
 }
 .team-row {
   display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 24px;
+  grid-template-columns: 152px 1fr;
+  gap: 28px;
   align-items: start;
   text-decoration: none;
   border-radius: 6px;
 }
 .team-row__photo {
-  width: 112px;
-  height: 140px;
+  width: 152px;
+  height: 190px;
   border-radius: var(--motif-top);
   overflow: hidden;
   background: var(--surface-2);
@@ -849,12 +886,12 @@ h3 {
     gap: 36px;
   }
   .team-row {
-    grid-template-columns: 72px 1fr;
-    gap: 18px;
+    grid-template-columns: 96px 1fr;
+    gap: 20px;
   }
   .team-row__photo {
-    width: 72px;
-    height: 92px;
+    width: 96px;
+    height: 120px;
   }
 }
 
