@@ -31,7 +31,7 @@ jobs:
           # Opcionais. Sem eles o site sobe em modo demonstração.
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-          VITE_SITE_URL: https://duduwwl.github.io/clinica-vivaz
+          VITE_SITE_URL: https://duduwwl.github.io/Clinica-Vivaz
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -8,7 +8,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { join } from 'node:path'
 
 const DIST = 'dist'
-const SITE = (process.env.VITE_SITE_URL ?? 'https://duduwwl.github.io/clinica-vivaz').replace(/\/$/, '')
+const SITE = (process.env.VITE_SITE_URL ?? 'https://duduwwl.github.io/Clinica-Vivaz').replace(/\/$/, '')
 const html = readFileSync(join(DIST, 'index.html'), 'utf8')
 
 const content = readFileSync('src/lib/content.ts', 'utf8')
@@ -59,5 +59,5 @@ writeFileSync(
     .map(([p]) => `  <url><loc>${SITE}${p === '/' ? '/' : p + '/'}</loc><lastmod>${today}</lastmod></url>`)
     .join('\n')}\n</urlset>\n`,
 )
-writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /clinica-vivaz/admin\nDisallow: /clinica-vivaz/consulta/\nSitemap: ${SITE}/sitemap.xml\n`)
+writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /Clinica-Vivaz/admin\nDisallow: /Clinica-Vivaz/consulta/\nSitemap: ${SITE}/sitemap.xml\n`)
 console.log(`postbuild: ${routes.length} páginas, sitemap.xml, robots.txt, 404.html`)

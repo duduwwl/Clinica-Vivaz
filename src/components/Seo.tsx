@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 const SITE = 'Clínica Vivaz'
-export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined) ?? 'https://duduwwl.github.io/clinica-vivaz'
+export const SITE_URL = (import.meta.env.VITE_SITE_URL as string | undefined) ?? 'https://duduwwl.github.io/Clinica-Vivaz'
 
 function setMeta(attr: 'name' | 'property', key: string, value: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`)

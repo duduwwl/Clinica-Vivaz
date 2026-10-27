@@ -2,8 +2,8 @@
 
 Site institucional da **Clínica Vivaz | Saúde Integral** (Rua Professor Alberto de Carvalho, 174, Ouro Preto, Lavras-MG) com agenda independente para cada profissional e painel administrativo com perfis de acesso.
 
-- **Site publicado:** https://duduwwl.github.io/clinica-vivaz/
-- **Painel:** https://duduwwl.github.io/clinica-vivaz/admin
+- **Site publicado:** https://duduwwl.github.io/Clinica-Vivaz/
+- **Painel:** https://duduwwl.github.io/Clinica-Vivaz/admin
 
 > **Modo demonstração x produção.** Sem as variáveis do Supabase o site roda em *modo demonstração*: horários e pacientes fictícios, salvos só no navegador de quem testa, com aviso em todas as telas de agenda. Com o Supabase configurado, a mesma interface passa a usar banco de dados real, autenticação e regras de acesso no servidor.
 
@@ -88,7 +88,7 @@ npm run build && npm run preview & npm run test:e2e   # testes no Chrome
    select id, 'Nome da pessoa', 'admin' from auth.users where email = 'email@dominio.com';
    ```
    Os demais acessos são dados pelo próprio painel (Usuários e acessos).
-4. Authentication → URL Configuration: adicione `https://duduwwl.github.io/clinica-vivaz/admin` às URLs permitidas.
+4. Authentication → URL Configuration: adicione `https://duduwwl.github.io/Clinica-Vivaz/admin` às URLs permitidas.
 5. No GitHub: Settings → Secrets and variables → Actions → crie `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (Settings → API do Supabase). O próximo push publica em modo produção.
 6. No painel, cadastre os **horários reais** de cada profissional e os feriados.
 7. Backups: o plano Pro do Supabase faz backup diário; para o plano gratuito, agende `pg_dump` semanal.

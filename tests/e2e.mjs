@@ -1,12 +1,12 @@
 /**
  * Testes ponta a ponta no navegador real (Chrome headless), contra o build de produção.
  * Uso: npm run build && npx vite preview --port 4173 & node tests/e2e.mjs
- * Variáveis: BASE_URL (padrão http://localhost:4173/clinica-vivaz), CHROME_PATH.
+ * Variáveis: BASE_URL (padrão http://localhost:4173/Clinica-Vivaz), CHROME_PATH.
  */
 import { chromium } from 'playwright-core'
 import { mkdirSync } from 'node:fs'
 
-const BASE = process.env.BASE_URL ?? 'http://localhost:4173/clinica-vivaz'
+const BASE = process.env.BASE_URL ?? 'http://localhost:4173/Clinica-Vivaz'
 const OUT = process.env.SHOTS ?? 'tests/screens'
 mkdirSync(OUT, { recursive: true })
 
@@ -64,11 +64,11 @@ for (const r of ROUTES) {
 await test('links internos da home levam a páginas existentes', async () => {
   const { p, ctx } = await page()
   await p.goto(BASE + '/', { waitUntil: 'networkidle' })
-  const hrefs = await p.$$eval('a[href^="/clinica-vivaz"]', (as) => [...new Set(as.map((a) => a.getAttribute('href')))])
+  const hrefs = await p.$$eval('a[href^="/Clinica-Vivaz"]', (as) => [...new Set(as.map((a) => a.getAttribute('href')))])
   for (const h of hrefs) {
     const q = await ctx.newPage()
     const path = h.split('#')[0]
-    await q.goto(new URL(path === '/clinica-vivaz' ? '/clinica-vivaz/' : path, BASE).href, { waitUntil: 'networkidle' })
+    await q.goto(new URL(path === '/Clinica-Vivaz' ? '/Clinica-Vivaz/' : path, BASE).href, { waitUntil: 'networkidle' })
     const t = await q.locator('h1').first().innerText()
     assert(!/não encontrada/i.test(t), `link quebrado: ${h}`)
     await q.close()

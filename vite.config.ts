@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// GitHub Pages publica em https://duduwwl.github.io/clinica-vivaz/
+// GitHub Pages publica em https://duduwwl.github.io/Clinica-Vivaz/
 // Para domínio próprio, defina VITE_BASE=/ no build.
 export default defineConfig({
-  base: process.env.VITE_BASE ?? '/clinica-vivaz/',
+  base: process.env.VITE_BASE ?? '/Clinica-Vivaz/',
   plugins: [react()],
   build: {
     target: 'es2020',
