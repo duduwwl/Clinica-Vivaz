@@ -5,7 +5,7 @@ import { Seo } from '../components/Seo'
 import { Icon, Photo } from '../components/ui'
 import { Reveal, RevealItem } from '../components/motion/Reveal'
 import { useSite } from '../lib/SiteData'
-import { PILLARS, SPACES, asset } from '../lib/content'
+import { PILLARS, SPACES, asset, photoFocus } from '../lib/content'
 import { cap } from '../lib/time'
 
 export default function Sobre() {
@@ -24,7 +24,7 @@ export default function Sobre() {
             <h1>{content.about_title}</h1>
           </RevealItem>
           <RevealItem className="page-head__media">
-            <Photo src="/img/espaco/fachada.jpg" alt="Fachada da Clínica Vivaz iluminada à noite" priority sizes="(max-width: 900px) 100vw, 45vw" />
+            <Photo src="/img/espaco/fachada.jpg" alt="Fachada da Clínica Vivaz iluminada à noite" priority sizes="(max-width: 900px) 100vw, 45vw" focus={photoFocus('/img/espaco/fachada.jpg')} />
           </RevealItem>
         </Reveal>
         <div className="contact-grid">
@@ -47,7 +47,7 @@ export default function Sobre() {
           <Reveal>
             <RevealItem className="page-head__media" >
               <div style={{ aspectRatio: '4 / 4.4', borderRadius: 'var(--motif-top)', overflow: 'hidden' }}>
-                <Photo src="/img/equipe/marilia-vaz-1-ano.jpg" alt="Dra. Marília Vaz na comemoração de um ano da Clínica Vivaz" sizes="(max-width: 900px) 100vw, 45vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Photo src="/img/equipe/marilia-vaz-1-ano.jpg" alt="Dra. Marília Vaz na comemoração de um ano da Clínica Vivaz" sizes="(max-width: 900px) 100vw, 45vw" focus={photoFocus('/img/equipe/marilia-vaz-1-ano.jpg')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </RevealItem>
             <RevealItem as="p" className="small muted">
@@ -84,7 +84,7 @@ export default function Sobre() {
           <div className="gallery-grid">
             {SPACES.map((s, i) => (
               <button key={s.slug} onClick={() => setOpen(i)} aria-label={`Ampliar foto: ${s.name}`}>
-                <Photo src={s.image} alt={`${s.name}: ${s.caption}`} sizes="(max-width: 700px) 100vw, 40vw" />
+                <Photo src={s.image} alt={`${s.name}: ${s.caption}`} sizes="(max-width: 700px) 100vw, 40vw" focus={photoFocus(s.image)} />
                 <span>{s.name}</span>
               </button>
             ))}

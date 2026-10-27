@@ -37,8 +37,8 @@ export function Reveal({
       ref={ref}
       className={className}
       variants={container}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
+      initial={reduce ? false : 'hidden'}
+      animate={reduce || inView ? 'visible' : 'hidden'}
       data-reveal=""
       style={{ ['--reveal-y' as string]: reduce ? '0px' : `${y}px` }}
     >
@@ -51,8 +51,8 @@ export function RevealItem({ children, as = 'div', className }: { children: Reac
   const reduce = useReducedMotion()
   const Comp = motionTag(as)
   const item: Variants = {
-    hidden: { opacity: 0, y: reduce ? 0 : 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } },
+    hidden: { opacity: reduce ? 1 : 0, y: reduce ? 0 : 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: reduce ? 0 : 0.7, ease: EASE } },
   }
   return (
     <Comp className={className} variants={item}>

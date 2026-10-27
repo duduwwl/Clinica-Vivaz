@@ -3,7 +3,7 @@
  * https://motion-primitives.com/docs/in-view
  * Mudança: dispara uma vez por padrão e aceita stagger dos filhos via <Reveal>.
  */
-import { useInView, type Transition, type UseInViewOptions, type Variant } from 'motion/react'
+import { useInView, useReducedMotion, type Transition, type UseInViewOptions, type Variant } from 'motion/react'
 import { motionTag } from './motionTag'
 import { useRef, useState, type ElementType, type ReactNode } from 'react'
 
@@ -30,6 +30,7 @@ export function InView({
 }: InViewProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, viewOptions)
+  const reduce = useReducedMotion()
   const [isViewed, setIsViewed] = useState(false)
   const MotionComponent = motionTag(as)
 
@@ -37,11 +38,11 @@ export function InView({
     <MotionComponent
       ref={ref}
       className={className}
-      initial="hidden"
+      initial={reduce ? false : 'hidden'}
       onAnimationComplete={() => {
         if (once && isInView) setIsViewed(true)
       }}
-      animate={isInView || isViewed ? 'visible' : 'hidden'}
+      animate={reduce || isInView || isViewed ? 'visible' : 'hidden'}
       variants={variants}
       transition={transition}
     >

@@ -8,7 +8,7 @@ import { TransitionPanel } from '../components/motion/TransitionPanel'
 import { VerticalCutReveal } from '../components/motion/VerticalCutReveal'
 import { useSite } from '../lib/SiteData'
 import { getApi } from '../lib/api'
-import { PILLARS, SPACES } from '../lib/content'
+import { PILLARS, SPACES, photoFocus } from '../lib/content'
 import { formatShortDate, formatTime } from '../lib/time'
 import { ContactCoupon } from '../components/ContactCoupon'
 
@@ -63,6 +63,7 @@ function Hero() {
             sizes="(max-width: 900px) 100vw, 60vw"
             width={1000}
             height={1060}
+            focus={photoFocus('/img/espaco/recepcao-marilia.jpg')}
           />
         </motion.div>
       </motion.div>
@@ -93,8 +94,10 @@ function Hero() {
               Conhecer a equipe
             </Link>
           </motion.div>
-          <NextSlots />
         </div>
+      </div>
+      <div className="wrap hero__availability">
+        <NextSlots />
       </div>
     </section>
   )
@@ -266,7 +269,8 @@ function Showcase() {
                   src={img}
                   alt={pro ? `${pro.name}, ${pro.title}` : s.name}
                   sizes="(max-width: 900px) 100vw, 45vw"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 22%' }}
+                  focus={photoFocus(img, '50% 30%')}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
               )
             })}
@@ -312,7 +316,7 @@ function TeamList() {
                 <RevealItem key={p.id}>
                   <Link to={`/equipe/${p.slug}`} className="team-row">
                     <span className="team-row__photo">
-                      <Photo src={p.photo_url} alt="" small sizes="96px" />
+                      <Photo src={p.photo_url} alt="" small sizes="128px" focus={photoFocus(p.photo_url, '50% 28%')} />
                     </span>
                     <span>
                       <span className="team-row__top">
@@ -364,7 +368,7 @@ function FrameGallery() {
             aria-label={`Mostrar próximo ambiente. Agora: ${SPACES[i].name}`}
           >
             {SPACES.map((s, k) => (
-              <Photo key={s.slug} src={s.image} alt={k === i ? `${s.name}: ${s.caption}` : ''} data-active={k === i} sizes="(max-width: 900px) 78vw, 40vw" />
+              <Photo key={s.slug} src={s.image} alt={k === i ? `${s.name}: ${s.caption}` : ''} data-active={k === i} sizes="(max-width: 900px) 88vw, 48vw" focus={photoFocus(s.image)} />
             ))}
           </button>
           <p className="frame-gallery__caption" aria-live="polite">
@@ -412,21 +416,21 @@ function HowTo() {
           </RevealItem>
           <RevealItem className="tile">
             <div className="tile__box">
-              <Photo src="/img/equipe/equipe-vivaz.jpg" alt="Equipe da Clínica Vivaz reunida no balcão da recepção" sizes="25vw" style={{ objectPosition: '60% 40%' }} />
+              <Photo src="/img/equipe/equipe-vivaz.jpg" alt="Equipe da Clínica Vivaz reunida no balcão da recepção" sizes="(max-width: 900px) 100vw, 28vw" focus={photoFocus('/img/equipe/equipe-vivaz.jpg')} />
             </div>
             <h3>Escolha quem vai atender</h3>
             <p>Pela especialidade ou direto pelo nome da profissional.</p>
           </RevealItem>
           <RevealItem className="tile">
             <div className="tile__box">
-              <Photo src="/img/espaco/recepcao.jpg" alt="Recepção da Clínica Vivaz" sizes="33vw" />
+              <Photo src="/img/espaco/recepcao.jpg" alt="Recepção da Clínica Vivaz" sizes="(max-width: 900px) 100vw, 32vw" focus={photoFocus('/img/espaco/recepcao.jpg')} />
             </div>
             <h3>Escolha o dia e o horário</h3>
             <p>O calendário mostra só os horários realmente livres de cada agenda.</p>
           </RevealItem>
           <RevealItem className="tile">
             <div className="tile__box">
-              <Photo src="/img/espaco/fachada.jpg" alt="Fachada da Clínica Vivaz à noite, na Rua Professor Alberto de Carvalho" sizes="(max-width: 900px) 100vw, 42vw" />
+              <Photo src="/img/espaco/fachada.jpg" alt="Fachada da Clínica Vivaz à noite, na Rua Professor Alberto de Carvalho" sizes="(max-width: 900px) 100vw, 42vw" focus={photoFocus('/img/espaco/fachada.jpg')} />
             </div>
             <h3>Receba a confirmação</h3>
             <p>Você ganha um link da consulta e a recepção confirma pelo WhatsApp.</p>

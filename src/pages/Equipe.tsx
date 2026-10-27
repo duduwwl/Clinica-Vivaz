@@ -4,6 +4,7 @@ import { Photo } from '../components/ui'
 import { Reveal, RevealItem } from '../components/motion/Reveal'
 import { BookingFlow } from '../components/booking/BookingFlow'
 import { useSite } from '../lib/SiteData'
+import { photoFocus } from '../lib/content'
 import NotFound from './NotFound'
 
 export default function Equipe() {
@@ -28,7 +29,7 @@ export default function Equipe() {
           {professionals.map((p, i) => (
             <RevealItem key={p.id} className="spec-row" as="article">
               <div className="spec-row__media" style={{ aspectRatio: '4 / 4.2', borderRadius: i % 2 ? 'var(--motif-right)' : 'var(--motif-left)' }}>
-                <Photo src={p.photo_url} alt={`${p.name}, ${p.title}`} sizes="(max-width: 900px) 100vw, 45vw" style={{ objectPosition: '50% 20%' }} />
+                <Photo src={p.photo_url} alt={`${p.name}, ${p.title}`} sizes="(max-width: 900px) 100vw, 45vw" focus={photoFocus(p.photo_url, '50% 28%')} />
               </div>
               <div>
                 <h2>
@@ -61,7 +62,7 @@ export default function Equipe() {
             </RevealItem>
             <RevealItem>
               <div className="page-head__media" style={{ marginTop: 40, aspectRatio: '1000 / 375' }}>
-                <Photo src="/img/equipe/equipe-vivaz.jpg" alt="Dra. Marília Vaz com a equipe da Clínica Vivaz no balcão da recepção" sizes="100vw" />
+                <Photo src="/img/equipe/equipe-vivaz.jpg" alt="Dra. Marília Vaz com a equipe da Clínica Vivaz no balcão da recepção" sizes="100vw" focus={photoFocus('/img/equipe/equipe-vivaz.jpg')} />
               </div>
             </RevealItem>
           </Reveal>
@@ -96,7 +97,7 @@ export function Profissional() {
       <div className="wrap">
         <article className="profile">
           <div className="profile__photo">
-            <Photo src={p.photo_url} alt={`${p.name}, ${p.title}`} priority sizes="(max-width: 900px) 100vw, 40vw" />
+            <Photo src={p.photo_url} alt={`${p.name}, ${p.title}`} priority sizes="(max-width: 900px) 100vw, 40vw" focus={photoFocus(p.photo_url, '50% 28%')} />
           </div>
           <Reveal>
             <RevealItem>

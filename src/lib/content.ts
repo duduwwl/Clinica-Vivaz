@@ -13,6 +13,27 @@ export const asset = (p: string | null | undefined) =>
 export const webp = (p: string | null | undefined, small = false) =>
   !p || /^https?:/.test(p) ? asset(p) : asset(p.replace(/\.jpe?g$/, small ? '-sm.webp' : '.webp'))
 
+/** Pontos focais para que rostos e detalhes importantes sobrevivam a diferentes recortes. */
+export const PHOTO_FOCUS: Record<string, string> = {
+  '/img/equipe/marilia-vaz.jpg': '52% 28%',
+  '/img/equipe/natalia-sales-botega.jpg': '58% 28%',
+  '/img/equipe/paula-paviani.jpg': '50% 18%',
+  '/img/equipe/flavia-de-simone.jpg': '50% 42%',
+  '/img/equipe/marilia-vaz-1-ano.jpg': '50% 24%',
+  '/img/equipe/equipe-vivaz.jpg': '56% 42%',
+  '/img/espaco/recepcao-marilia.jpg': '66% 38%',
+  '/img/espaco/fachada.jpg': '50% 54%',
+  '/img/espaco/recepcao.jpg': '50% 50%',
+  '/img/espaco/sala-espera.jpg': '50% 48%',
+  '/img/espaco/consultorio.jpg': '50% 50%',
+  '/img/espaco/sala-procedimentos.jpg': '50% 48%',
+  '/img/espaco/massagem.jpg': '50% 52%',
+  '/img/espaco/detalhes.jpg': '50% 48%',
+}
+
+export const photoFocus = (src: string | null | undefined, fallback = '50% 50%') =>
+  (src && PHOTO_FOCUS[src]) || fallback
+
 export const CLINIC: ClinicSettings = {
   name: 'Clínica Vivaz | Saúde Integral',
   address: 'Rua Professor Alberto de Carvalho, 174',

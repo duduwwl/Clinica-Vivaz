@@ -25,11 +25,14 @@ export function Photo({
   small,
   priority,
   sizes,
+  focus,
+  style,
   ...rest
-}: { src: string | null | undefined; alt: string; small?: boolean; priority?: boolean } & Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'>) {
+}: { src: string | null | undefined; alt: string; small?: boolean; priority?: boolean; focus?: string } & Omit<ImgHTMLAttributes<HTMLImageElement>, 'src'>) {
   if (!src) return null
   const isLocal = !/^(https?:|data:)/.test(src)
-  if (!isLocal) return <img src={src} alt={alt} loading={priority ? 'eager' : 'lazy'} decoding="async" {...rest} />
+  const imageStyle = focus ? { ...style, objectPosition: focus } : style
+  if (!isLocal) return <img src={src} alt={alt} loading={priority ? 'eager' : 'lazy'} decoding="async" style={imageStyle} {...rest} />
   return (
     <picture>
       <source
@@ -43,6 +46,7 @@ export function Photo({
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
         decoding="async"
+        style={imageStyle}
         {...rest}
       />
     </picture>
