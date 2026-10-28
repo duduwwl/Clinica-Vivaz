@@ -30,6 +30,12 @@ const KEY = 'vivaz-demo-v1'
 const SESSION = 'vivaz-demo-session'
 export const DEMO_PASSWORD = 'demo1234'
 
+const PHOTO_UPGRADES: Record<string, string> = {
+  '/img/equipe/natalia-sales-botega.jpg': '/img/equipe/natalia-sales-botega-v2.jpg',
+  '/img/equipe/paula-paviani.jpg': '/img/equipe/paula-paviani-v2.jpg',
+  '/img/equipe/flavia-de-simone.jpg': '/img/equipe/flavia-de-simone-v2.jpg',
+}
+
 interface DemoUser extends StaffProfile {
   email: string
 }
@@ -173,6 +179,10 @@ export class DemoApi implements Api {
       parsed = null
     }
     this.s = parsed ?? seed()
+    this.s.professionals = this.s.professionals.map((professional) => ({
+      ...professional,
+      photo_url: PHOTO_UPGRADES[professional.photo_url ?? ''] ?? professional.photo_url,
+    }))
     this.save()
   }
 
