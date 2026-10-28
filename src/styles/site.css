@@ -124,6 +124,24 @@ h3 {
   line-height: 1.05;
   text-wrap: balance;
 }
+.text-effect,
+.text-effect__word,
+.text-effect__char {
+  display: inline;
+}
+.text-effect__word {
+  white-space: nowrap;
+}
+.text-effect__char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-effect__char {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
 .display {
   font-size: var(--step-display);
   line-height: 1;

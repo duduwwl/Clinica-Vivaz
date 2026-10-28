@@ -5,6 +5,7 @@ import { Icon, Wordmark } from './ui'
 import { useSite } from '../lib/SiteData'
 import { whatsappLink } from '../lib/content'
 import { WORD_PATH, WORD_VIEWBOX } from './brandPaths'
+import { withTextEffect } from './core/text-effect-tree'
 
 const NAV = [
   { to: '/especialidades', label: 'Especialidades' },
@@ -43,7 +44,7 @@ export function Layout() {
     return () => window.removeEventListener('keydown', onKey)
   }, [menu])
 
-  return (
+  return withTextEffect(
     <>
       <a className="skip-link" href="#conteudo">
         Pular para o conteúdo
@@ -113,7 +114,7 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
-    </>
+    </>,
   )
 }
 
@@ -129,7 +130,7 @@ function MenuWhats() {
 export function Footer() {
   const { clinic, specialties, professionals } = useSite()
   const year = new Date().getFullYear()
-  return (
+  return withTextEffect(
     <footer className="site-footer field-light">
       <div className="wrap">
         <Link to="/" className="site-footer__mark" aria-label="Clínica Vivaz, página inicial">
@@ -200,9 +201,9 @@ export function Footer() {
             Agendar
           </Link>
         </div>
-        <p className="site-footer__credit">Fotografias: acervo da Clínica Vivaz (@clinicavivaz_ e @dramariliavaz). Este site não substitui a consulta médica.</p>
+        <p className="site-footer__credit">Fotografias-base: acervo da Clínica Vivaz (@clinicavivaz_ e @dramariliavaz). Alguns retratos receberam tratamento digital. Este site não substitui a consulta médica.</p>
       </div>
-    </footer>
+    </footer>,
   )
 }
 

@@ -6,6 +6,7 @@
 import { useInView, useReducedMotion, type Variants } from 'motion/react'
 import { motionTag } from './motionTag'
 import { useRef, type ElementType, type ReactNode } from 'react'
+import { withTextEffect } from '../core/text-effect-tree'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -56,7 +57,7 @@ export function RevealItem({ children, as = 'div', className }: { children: Reac
   }
   return (
     <Comp className={className} variants={item}>
-      {children}
+      {withTextEffect(children)}
     </Comp>
   )
 }

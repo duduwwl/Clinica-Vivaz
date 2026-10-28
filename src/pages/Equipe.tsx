@@ -62,7 +62,7 @@ export default function Equipe() {
             </RevealItem>
             <RevealItem>
               <div className="page-head__media" style={{ marginTop: 40, aspectRatio: '1000 / 375' }}>
-                <Photo src="/img/equipe/equipe-vivaz.jpg" alt="Dra. Marília Vaz com a equipe da Clínica Vivaz no balcão da recepção" sizes="100vw" focus={photoFocus('/img/equipe/equipe-vivaz.jpg')} />
+                <Photo src="/img/equipe/equipe-vivaz-v2.jpg" alt="Dra. Marília Vaz com a equipe da Clínica Vivaz no balcão da recepção" sizes="100vw" focus={photoFocus('/img/equipe/equipe-vivaz-v2.jpg')} />
               </div>
             </RevealItem>
           </Reveal>

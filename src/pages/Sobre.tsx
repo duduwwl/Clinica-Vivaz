@@ -47,7 +47,7 @@ export default function Sobre() {
           <Reveal>
             <RevealItem className="page-head__media" >
               <div style={{ aspectRatio: '4 / 4.4', borderRadius: 'var(--motif-top)', overflow: 'hidden' }}>
-                <Photo src="/img/equipe/marilia-vaz-1-ano.jpg" alt="Dra. Marília Vaz na comemoração de um ano da Clínica Vivaz" sizes="(max-width: 900px) 100vw, 45vw" focus={photoFocus('/img/equipe/marilia-vaz-1-ano.jpg')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <Photo src="/img/equipe/marilia-vaz-1-ano-v2.jpg" alt="Dra. Marília Vaz na comemoração de um ano da Clínica Vivaz" sizes="(max-width: 900px) 100vw, 45vw" focus={photoFocus('/img/equipe/marilia-vaz-1-ano-v2.jpg')} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </RevealItem>
             <RevealItem as="p" className="small muted">

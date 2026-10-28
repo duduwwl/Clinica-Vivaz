@@ -5,10 +5,10 @@ import { Seo } from '../components/Seo'
 import { Photo, useAsync } from '../components/ui'
 import { Reveal, RevealItem } from '../components/motion/Reveal'
 import { TransitionPanel } from '../components/motion/TransitionPanel'
-import { VerticalCutReveal } from '../components/motion/VerticalCutReveal'
+import { TextEffect } from '../components/core/text-effect'
 import { useSite } from '../lib/SiteData'
 import { getApi } from '../lib/api'
-import { PILLARS, SPACES, photoFocus } from '../lib/content'
+import { SPACES, photoFocus } from '../lib/content'
 import { formatShortDate, formatTime } from '../lib/time'
 import { ContactCoupon } from '../components/ContactCoupon'
 
@@ -72,7 +72,7 @@ function Hero() {
         <div className="wrap hero__content">
           <div className="hero__text">
             <h1 id="hero-titulo">
-              <VerticalCutReveal delay={0.2}>{content.hero_title}</VerticalCutReveal>
+              <TextEffect per="char" preset="fade">{content.hero_title}</TextEffect>
             </h1>
             <motion.p
               className="hero__sentence"
@@ -80,7 +80,7 @@ function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
-              {content.hero_sentence}
+              <TextEffect per="char" preset="fade">{content.hero_sentence}</TextEffect>
             </motion.p>
             <motion.div
               className="hero__actions"
@@ -149,7 +149,6 @@ function NextSlots() {
 
 /* ------------------------------------------------------------------ declaração */
 function Statement() {
-  const thumbs = PILLARS
   return (
     <section className="statement" aria-labelledby="pilares-titulo">
       <div className="wrap statement__grid">
@@ -159,23 +158,7 @@ function Statement() {
               O que a Vivaz defende
             </h2>
             <p>
-              Ciência
-              <span className="thumb">
-                <Photo src={thumbs[0].image} alt="" small />
-              </span>
-              , cuidado
-              <span className="thumb">
-                <Photo src={thumbs[1].image} alt="" small />
-              </span>
-              , tecnologia
-              <span className="thumb">
-                <Photo src={thumbs[2].image} alt="" small />
-              </span>
-              e humanização
-              <span className="thumb">
-                <Photo src={thumbs[3].image} alt="" small />
-              </span>
-              : as palavras que guiam a Vivaz.
+              Ciência, cuidado, tecnologia e humanização: as palavras que guiam a Vivaz.
             </p>
           </RevealItem>
         </Reveal>
@@ -266,7 +249,7 @@ function Showcase() {
           >
             {specialties.map((s) => {
               const pro = professionals.find((p) => p.specialty_ids.includes(s.id))
-              const img = pro?.photo_url ?? s.photo_url
+              const img = pro?.slug === 'marilia-vaz' ? '/img/equipe/marilia-vaz-consultorio.jpg' : pro?.photo_url ?? s.photo_url
               return (
                 <Photo
                   key={s.id}
@@ -420,7 +403,7 @@ function HowTo() {
           </RevealItem>
           <RevealItem className="tile">
             <div className="tile__box">
-              <Photo src="/img/equipe/equipe-vivaz.jpg" alt="Equipe da Clínica Vivaz reunida no balcão da recepção" sizes="(max-width: 900px) 100vw, 28vw" focus={photoFocus('/img/equipe/equipe-vivaz.jpg')} />
+              <Photo src="/img/equipe/equipe-vivaz-v2.jpg" alt="Equipe da Clínica Vivaz reunida no balcão da recepção" sizes="(max-width: 900px) 100vw, 28vw" focus={photoFocus('/img/equipe/equipe-vivaz-v2.jpg')} />
             </div>
             <h3>Escolha quem vai atender</h3>
             <p>Pela especialidade ou direto pelo nome da profissional.</p>
