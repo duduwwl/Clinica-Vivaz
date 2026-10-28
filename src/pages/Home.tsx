@@ -58,13 +58,13 @@ function Hero() {
             transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
           >
             <Photo
-              src="/img/espaco/recepcao-marilia.jpg"
-              alt="Dra. Marília Vaz no balcão curvo da recepção da Clínica Vivaz, diante do logotipo da clínica"
+              src="/img/espaco/fachada-hero-clean.jpg"
+              alt="Fachada iluminada da Clínica Vivaz à noite, com a entrada principal e o jardim"
               priority
               sizes="100vw"
-              width={1000}
-              height={1060}
-              focus={photoFocus('/img/espaco/recepcao-marilia.jpg')}
+              width={1672}
+              height={944}
+              focus={photoFocus('/img/espaco/fachada-hero-clean.jpg')}
             />
           </motion.div>
         </motion.div>

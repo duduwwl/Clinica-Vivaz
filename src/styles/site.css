@@ -438,15 +438,15 @@ h3 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgb(20 16 14 / 0.96) 0%, rgb(20 16 14 / 0.86) 37%, rgb(20 16 14 / 0.3) 68%, rgb(20 16 14 / 0.06) 100%);
+  background: linear-gradient(90deg, rgb(14 12 11 / 0.9) 0%, rgb(14 12 11 / 0.74) 38%, rgb(14 12 11 / 0.18) 65%, rgb(14 12 11 / 0.02) 100%);
   pointer-events: none;
 }
 .hero__shape img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 66% 34%;
-  transform: scale(1.035);
+  object-position: 62% 50%;
+  transform: scale(1.015);
 }
 .hero__content {
   position: relative;
@@ -590,11 +590,11 @@ h3 {
     border-radius: 0;
   }
   .hero__shape::after {
-    background: linear-gradient(180deg, rgb(20 16 14 / 0.08) 0%, rgb(20 16 14 / 0.18) 34%, rgb(20 16 14 / 0.92) 72%, rgb(20 16 14 / 0.98) 100%);
+    background: linear-gradient(180deg, rgb(14 12 11 / 0.04) 0%, rgb(14 12 11 / 0.12) 38%, rgb(14 12 11 / 0.9) 70%, rgb(14 12 11 / 0.98) 100%);
   }
   .hero__shape img {
-    object-position: 67% 30%;
-    transform: scale(1.04);
+    object-position: 67% 50% !important;
+    transform: scale(1.02);
   }
   .hero__actions {
     margin-top: 32px;

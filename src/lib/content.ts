@@ -22,6 +22,7 @@ export const PHOTO_FOCUS: Record<string, string> = {
   '/img/equipe/marilia-vaz-1-ano-v2.jpg': '50% 38%',
   '/img/equipe/equipe-vivaz-v2.jpg': '52% 44%',
   '/img/espaco/recepcao-marilia.jpg': '66% 38%',
+  '/img/espaco/fachada-hero-clean.jpg': '62% 50%',
   '/img/espaco/fachada.jpg': '50% 54%',
   '/img/espaco/recepcao.jpg': '50% 50%',
   '/img/espaco/sala-espera.jpg': '50% 48%',
